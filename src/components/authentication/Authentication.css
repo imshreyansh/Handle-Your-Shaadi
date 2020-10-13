@@ -1,0 +1,82 @@
+body{
+background-color: #fce4ec;
+background-repeat:no-repeat;
+background-size: 100% 100%;
+background-attachment: fixed;
+}
+
+.authedSecond{
+    margin-left:20px;
+    bottom: 20px;
+}
+
+.authedThird{
+    width:90%;
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10px;
+}
+
+.authedFourth{
+    width:25%;
+    background-image: url('../../assets/loginComp.jpg');
+    padding:2%;
+    border-radius:8px;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    box-shadow: 5px 5px 5px white;
+
+}
+
+.authedEmail{
+    width:90%;
+    padding:2.5%;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+    box-shadow: 2px 2px #e040fb;
+}
+
+.authedPassword{
+    margin-top: 30px;
+    width:90%;
+    padding:2.5%;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+    box-shadow: 2px 2px #e040fb;
+}
+
+.authedSubmit{
+    margin-top: 30px;
+    width:60%;
+    padding:2.5%;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+    background-color:white;
+    box-shadow: 5px 5px  #e040fb;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+   
+}
+
+.authedSubmitTwo{
+    width:40%;
+    margin-left: auto;
+    margin-right: auto;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+
+.authedSubmitText{
+    font-size:22px;
+    color:#e040fb;
+}
