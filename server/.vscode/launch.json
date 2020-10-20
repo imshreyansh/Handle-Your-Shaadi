@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "nodemon server.js",
+            "command": "node server.js",
             "name": "Run npm start",
             "request": "launch",
             "type": "node-terminal"

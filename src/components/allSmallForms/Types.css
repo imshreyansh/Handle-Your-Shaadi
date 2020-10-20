@@ -1,0 +1,17 @@
+.tabBarZero{
+    margin-top: 10px;
+    width:100%;
+}
+
+.typesInputOne{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.typesInputOneOne{
+    width:30%;
+    padding:0.5%;
+    border:2px solid ;
+    border-radius:5px;
+    outline:none;
+}

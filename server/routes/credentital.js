@@ -1,4 +1,4 @@
-const { createAdmin, login } = require('../controller/credential')
+const { createAdmin, login,getAllAdmin,updateAdmin } = require('../controller/credential')
 
 exports.routes = (express, app) => {
 
@@ -7,6 +7,11 @@ exports.routes = (express, app) => {
     router.post('/createAdmin', createAdmin)
 
     router.post('/login', login)
+
+    router.get('/getAllAdmin', getAllAdmin)
+
+    router.put('/updateAdmin/:id', updateAdmin)
+
 
     app.use('/api/credential/', router);
 

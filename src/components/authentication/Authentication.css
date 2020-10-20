@@ -1,5 +1,5 @@
 body{
-background-color: #fce4ec;
+background-image: url("../../assets/mainPage.jpg");
 background-repeat:no-repeat;
 background-size: 100% 100%;
 background-attachment: fixed;
@@ -23,6 +23,7 @@ background-attachment: fixed;
 .authedFourth{
     width:25%;
     background-image: url('../../assets/loginComp.jpg');
+    background-size: 100% 100%;
     padding:2%;
     border-radius:8px;
     display:flex;
@@ -38,7 +39,7 @@ background-attachment: fixed;
     border:none;
     border-radius:8px;
     font-size:15px;
-    box-shadow: 2px 2px #e040fb;
+    box-shadow: 2px 2px #c15ca1;
 }
 
 .authedPassword{
@@ -48,7 +49,7 @@ background-attachment: fixed;
     border:none;
     border-radius:8px;
     font-size:15px;
-    box-shadow: 2px 2px #e040fb;
+    box-shadow: 2px 2px #c15ca1;
 }
 
 .authedSubmit{
@@ -59,7 +60,7 @@ background-attachment: fixed;
     border-radius:8px;
     font-size:15px;
     background-color:white;
-    box-shadow: 5px 5px  #e040fb;
+    box-shadow: 5px 5px  #c15ca1;
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
@@ -67,16 +68,15 @@ background-attachment: fixed;
 }
 
 .authedSubmitTwo{
-    width:40%;
+    width:50%;
     margin-left: auto;
     margin-right: auto;
     display:flex;
     flex-direction:row;
-    justify-content:space-between;
 }
 
 
 .authedSubmitText{
     font-size:22px;
-    color:#e040fb;
+    color:#c15ca1;
 }

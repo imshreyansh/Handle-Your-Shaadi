@@ -1,0 +1,78 @@
+
+
+
+.saDashboardBottomDrawer{
+width:100%;
+background-color:#ad1457;
+padding:0.3%;
+top:0;
+}
+
+.saDashboardBottomDrawerUser{
+display:flex;
+justify-content: flex-end;
+flex-direction:row;
+margin-right: 10px;
+}
+
+
+.saDashboardTwoSideMenu{
+    height:100vh;
+    width:50%;
+    border-top-right-radius: 50px;
+    background-color: #ad1457;
+    padding-right: 5px;
+}
+
+.saDashboardThirdLogo{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.saDashboardLogo{
+    width:100%;
+    height:80%;
+}
+
+.saDashboardFourth{
+margin-top: 30px;
+flex-direction:column;
+display:flex;
+justify-content: center;
+align-items: center;
+}
+
+.saDashboardFifth{
+    width:100%
+}
+
+.saUserImage{
+        width:40px;
+        height:40px;
+        border-radius: 80px;
+        border:1px solid white;
+        margin-right: 30px;
+
+}
+
+.saUsername{
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    margin-right:10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.saDropdown{
+background-color: transparent;
+border:none;
+outline:none;
+font-size:14px;
+color: white;
+}
+
+
+/* System Admin Dashboard */
+

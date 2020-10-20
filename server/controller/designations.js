@@ -16,3 +16,14 @@ exports.createDesignation = async (req, res) => {
             })
     }
 }
+
+exports.getAllDesignation = async (req,res)=>{
+    Designations.find({})
+    .then((response)=>{
+        successResponseHandler(res,response,'Successfully get all designations')
+    })
+    .catch((error)=>{
+        errorResponseHandler(res, 'Error', 'Error while getting designation')
+
+    })
+}

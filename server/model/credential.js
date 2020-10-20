@@ -23,6 +23,14 @@ const credential = new Schema({
     designation: {
         type: Schema.Types.ObjectId,
         ref: "Designations"
+    },
+    status:{
+        type: String,
+        default:'Active'
+    },
+    created_at: {
+        type: Date,
+        default: new Date()
     }
 })
 

@@ -27,7 +27,7 @@ app.use("/uploads", express.static("uploads"))
 
 
 mongoose.connect('mongodb://localhost/handleyourshaadi',
-    { useNewUrlParser: true }
+    { useNewUrlParser: true },{ useFindAndModify: false }
 ).then(() =>
     console.log('connected to mongodb'))
     .catch((err) =>

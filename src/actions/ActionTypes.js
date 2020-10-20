@@ -1,1 +1,10 @@
 export const LOGIN_USER = 'LOGIN_USER';
+export const CREATE_ADMIN = 'CREATE_ADMIN'
+export const LOGOUT_USER = 'LOGOUT_USER'
+export const GET_ALERT = 'GET_ALERT'
+export const GET_ALL_DESIGNATION = 'GET_ALL_DESIGNATION'
+export const GET_ALL_ADMIN = 'GET_ALL_ADMIN'
+export const UPDATE_ADMIN= 'UPDATE_ADMIN'
+export const ADD_TYPE = 'ADD_TYPE'
+export const GET_ALL_TYPES = 'GET_ALL_TYPES'
+export const UPDATE_TYPE = 'UPDATE_TYPE'
