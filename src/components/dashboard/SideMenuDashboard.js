@@ -39,7 +39,7 @@ class SideMenuDashboard extends Component {
                 </div>
                 </NavLink> :
                 <Fragment>
-             <NavLink to="/createVendor">
+             <NavLink to="/vendor">
                 <div className="saDashboardFourth">
                 <StorefrontIcon style={{ marginTop: 10, color: 'white',fontSize:50,cursor:"pointer"}}/>
                 </div>

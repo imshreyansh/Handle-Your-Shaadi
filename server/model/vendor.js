@@ -13,14 +13,17 @@ const vendor = new Schema({
         storePhotos:Object,
         storeDocument:Object,
         address:{
+            state:{
+                type:String
+            },
             city:{
                 type:String
             },
-            state:{
+            address:{
                 type:String
             }
         },
-        mobile:{
+        storeMobile:{
             type:Number
         },
         typeOfStore:{

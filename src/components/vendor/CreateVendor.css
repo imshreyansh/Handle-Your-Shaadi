@@ -1,0 +1,42 @@
+.vendorTextInputTwo{
+    width:30%;
+    padding:0.5%;
+    border:2px solid ;
+    border-radius:5px;
+}
+
+.vendorTextInputTwo > input {
+    display:none;
+}
+
+.vendorButtons{
+    display:flex;
+    flex-direction:row;
+}
+
+.vendorDataAdded{
+    margin-top: 50px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    width:100%;
+}
+
+.vendorDataDisplay{
+    padding: 1%;
+    background-color: white;
+    width:20%;
+    border-radius: 5px;
+}
+
+.vendorData{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.vendorDataSpan{
+    font-weight: 300;
+    font-size: 14;
+    margin-top: 5px;
+}

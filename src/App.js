@@ -10,7 +10,7 @@ import CreateAdmin from './components/admin/CreateAdmin'
 import SnackBar from './components/systemUI/SnackBar'
 import TopBar from './components/dashboard/TopBar'
 import TabBar from './components/allSmallForms/TabBar'
-
+import VendroTab from './components/vendor/VendorTab'
 class App extends Component {
   constructor(props){
     super(props)
@@ -54,6 +54,7 @@ class App extends Component {
           <div className="appSideMenuandComponent">
           <SideMenuDashboard />
         <Switch>
+        <Route path="/vendor" component={VendroTab} />
         <Route path="/tabBar" component={TabBar} />
         </Switch>
           </div>

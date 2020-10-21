@@ -9,17 +9,26 @@ exports.createVendor = async(req,res)=>{
         if (error)
         return errorResponseHandler(res, error, 'Error While Creating')
         try{
-            const checkMail = await VendorSchema.findOne({email:JSON.parse(req.body).email})
+            const checkMail = await VendorSchema.findOne({email:JSON.parse(req.body.data).email})
             if(checkMail) return errorResponseHandler(res,'Error','Vendor Already Exist')
             const salt = await bcrypt.genSalt(12)
-           const { name, email, mobile, password, gender, designation,store } = JSON.parse(req.body.data)
+           const { name, email, mobile, password, gender, designation } = JSON.parse(req.body.data)
+           const store = []
+           req.body.store.map((d,i)=>{
+               store.push(JSON.parse(d))
+           })
            const newCredential = new CredentitalSchema({name, email, mobile, password, gender,designation})
            newCredential.password=await bcrypt.hash(newCredential.password,salt)
            newCredential['avatar'] = req.files[0]
            const saveCrdential = await newCredential.save()
            const newVendor = new VendorSchema({store})
-           newVendor['store.storePhotos'] = req.files[0]
-           newVendor['store.storeDocument'] = req.files[0]
+           req.files.filter(d=>d.fieldname === 'storeDocument').map((data,index)=>{
+            newVendor.store.map((v,i)=>{
+                if(i=== index){
+                    v['storeDocument'] = data
+                }
+         })                 })
+        //    newVendor['storePhotos'] = req.files[1]
            newVendor['crdential'] = saveCrdential._id
            const saveVendor = await newVendor.save()
            successResponseHandler(res,saveVendor,'Successfully added vendor')
