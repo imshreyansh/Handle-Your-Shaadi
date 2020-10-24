@@ -11,6 +11,7 @@ import SnackBar from './components/systemUI/SnackBar'
 import TopBar from './components/dashboard/TopBar'
 import TabBar from './components/allSmallForms/TabBar'
 import VendroTab from './components/vendor/VendorTab'
+import CreateVendor from './components/vendor/CreateVendor'
 class App extends Component {
   constructor(props){
     super(props)

@@ -37,7 +37,6 @@ class CreateVendor extends Component {
             storeDocuments:'',
             storeDocumentsE:'',
             store:[],
-            storeDocs:[]
 
         }
         this.state=this.default
@@ -52,7 +51,6 @@ class CreateVendor extends Component {
 
         let reader = new FileReader();
         let file = e.target.files[0];
-
         reader.onloadend = () => {
             this.setState({
                 file: file,
@@ -65,12 +63,11 @@ class CreateVendor extends Component {
 
     documentsSelect(e) {
         e.preventDefault();
-
         let reader = new FileReader();
-        let file = e.target.files[0];
+        let file = e.target.files[0]
         reader.onloadend = () => {
             this.setState({
-                storeDocuments: file,
+                storeDocuments: [...this.state.storeDocuments,file],
             });
         }
 
@@ -90,28 +87,42 @@ class CreateVendor extends Component {
             const formData = new FormData()
             formData.append('data',JSON.stringify(obj))
             formData.append('avatar',this.state.file)
-            this.state.store.map((d)=>{
+            this.state.store.map((d,i)=>{
                 const obj = {
                     storeName:d.storeName,
                     address:d.address,
                     storeMobile:d.storeMobile,
                     typeOfStore:d.typeOfStore
                 }
-                formData.append('storeDocument',d.storeDocument)
+                d.storeDocument.map((data)=>{
+                formData.append('storeDocument',data,i)
+                })
                 formData.append('store',JSON.stringify(obj))
             })
-            if(name !== '' && nameE ==='' && mobile !== '' && mobileE ==='' && password !== '' && passwordE ===''&& email !== '' && emailE ===''){
+            if(name !== '' && nameE ==='' && mobile !== '' && mobileE ==='' && password !== '' && passwordE ===''&& email !== '' && emailE ==='' && this.state.file !=='' && this.state.store.length>0){
 this.props.dispatch(createVendor(formData))
-        // this.setState({
-        //     name:'',
-        //     email:'',
-        //     mobile:'',
-        //     password:'',
-        //     gender:'MALE',
-        //     editedDataId:'',
-        //     imagePreviewUrl:'',
-        //     file:''
-        // })
+        this.setState({
+            name:'',
+            email:'',
+            mobile:'',
+            password:'',
+            gender:'MALE',
+            editedDataId:'',
+            imagePreviewUrl:'',
+            file:'',
+            storeName:'',
+            storeNameE:'',
+            storeMobile:'',
+            storeMobileE:'',
+            storeCity:'',
+            address:'',
+            addressE:'',
+            type:'',
+            storeDocuments:'',
+            storeDocumentsE:'',
+            store:[],
+
+        })
             }
             if(name === ''){
                 this.setState({
@@ -147,11 +158,23 @@ this.props.dispatch(createVendor(formData))
                     city:storeCity ? cities[storeCity].name : 'Mumbai',
                 },
                 storeMobile:storeMobile,
-                typeOfStore:type ? type : this.props.types[0]._id
+                typeOfStore:type ? type : this.props.types[0]._id,
+                storeStatus:'Active'
             }
             this.setState({
                 store:[...this.state.store,objTwo],
+                storeName:'',
+            storeNameE:'',
+            storeMobile:'',
+            storeMobileE:'',
+            storeCity:'',
+            address:'',
+            addressE:'',
+            type:'',
+            storeDocuments:'',
+            storeDocumentsE:'',
             })
+            
         }
         if(storeName === ''){
             this.setState({
@@ -163,7 +186,7 @@ this.props.dispatch(createVendor(formData))
                 storeMobileE:'This field is required'
             })
         }
-        if(storeDocuments === ''){
+        if(storeDocuments.length===0){
             this.setState({
                 storeDocumentsE:'This field is required'
             })
@@ -173,6 +196,15 @@ this.props.dispatch(createVendor(formData))
                 addressE:'This field is required'
             })
         }
+    }
+
+    onDelete = (i) =>{
+     const newStore=this.state.store.filter((d,index) => i !==index)
+       this.setState({
+           store:newStore,
+           storeDocuments:''
+       })
+
     }
 render(){
     return (
@@ -235,8 +267,8 @@ style={{borderColor: this.state.storeMobileE !=='' ? 'red' :'#ad1457'}}
 </select>
 <input type="text" className="adminTextInputOne" style={{borderColor: this.state.addressE !=='' ? 'red' :'#ad1457'}} value={this.state.address} onChange={(e)=>this.setState(validation(e,'address','text',['Address is reuired']))} placeholder="ADDRESS"/>
 <label for="documents-input" className="vendorTextInputTwo" style={{borderColor: this.state.storeDocumentsE !=='' ? 'red' :'#ad1457',backgroundColor:'white'}}>
-<input id="documents-input" type="file" onChange={this.documentsSelect} />
-<span style={{fontSize:14,color:this.state.storeDocuments ? '#333' : 'grey'}}>{this.state.storeDocuments ? this.state.storeDocuments.name : 'UPLOAD DOCS'}</span>
+<input id="documents-input" type="file" onChange={this.documentsSelect} multiple="multiple"/>
+<span style={{fontSize:14,color:this.state.storeDocuments.length>0 ? '#333' : 'grey'}}>{this.state.storeDocuments.length > 0 ? this.state.storeDocuments.map(d=>d.name).join(',') : 'UPLOAD DOCS'}</span>
 </label>
 </div>
 <div className="vendorButtons">
@@ -256,7 +288,7 @@ style={{borderColor: this.state.storeMobileE !=='' ? 'red' :'#ad1457'}}
         const typeName = this.props.types.filter(data=>data._id === d.typeOfStore)
         return(
 <div className="vendorDataDisplay">
-    <DeleteIcon style={{color:"#ad1457"}}/>
+    <DeleteIcon style={{color:"#ad1457"}} onClick={()=>this.onDelete(i)}/>
     <div className="vendorData">
     <span className="vendorDataSpan">{d.storeName}</span>
 <span className="vendorDataSpan">{d.storeMobile}</span>
@@ -264,7 +296,11 @@ style={{borderColor: this.state.storeMobileE !=='' ? 'red' :'#ad1457'}}
 <span className="vendorDataSpan">{d.address.state}</span>
 <span className="vendorDataSpan">{typeName[0].type}</span>
         <span className="vendorDataSpan">{d.address.address}</span>
-        <span className="vendorDataSpan">{d.storeDocument.name}</span>
+        {d.storeDocument.map((data)=>{
+            return(
+                <span className="vendorDataSpan">{data.name}</span>
+            )
+        })}
     </div>
 </div>
         )

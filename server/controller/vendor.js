@@ -14,18 +14,22 @@ exports.createVendor = async(req,res)=>{
             const salt = await bcrypt.genSalt(12)
            const { name, email, mobile, password, gender, designation } = JSON.parse(req.body.data)
            const store = []
-           req.body.store.map((d,i)=>{
-               store.push(JSON.parse(d))
-           })
+           if(Object.keys(req.body.store).length !== 181){
+            req.body.store.map((d,i)=>{
+                store.push(JSON.parse(d))
+            })
+           }else{
+               store.push(JSON.parse(req.body.store))
+           }
            const newCredential = new CredentitalSchema({name, email, mobile, password, gender,designation})
            newCredential.password=await bcrypt.hash(newCredential.password,salt)
            newCredential['avatar'] = req.files[0]
            const saveCrdential = await newCredential.save()
            const newVendor = new VendorSchema({store})
-           req.files.filter(d=>d.fieldname === 'storeDocument').map((data,index)=>{
+           req.files.filter(d=>d.fieldname === 'storeDocument').map((data)=>{
             newVendor.store.map((v,i)=>{
-                if(i=== index){
-                    v['storeDocument'] = data
+                if(i=== JSON.parse(data.filename)){
+                    v.storeDocument.push(data)
                 }
          })                 })
         //    newVendor['storePhotos'] = req.files[1]

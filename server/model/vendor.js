@@ -6,12 +6,17 @@ const vendor = new Schema({
         type:Schema.Types.ObjectId,
         ref:'CredentitalSchema'
     },
+    status:{
+        type:String,
+        default:'Active'
+    },
+
     store:[{
         storeName:{
             type:String
         },
         storePhotos:Object,
-        storeDocument:Object,
+        storeDocument:Array,
         address:{
             state:{
                 type:String
@@ -29,6 +34,10 @@ const vendor = new Schema({
         typeOfStore:{
             type:Schema.Types.ObjectId,
             ref:'TypeOfStoreSchema'
+        },
+        storeStatus:{
+            type:String,
+            default:'Inactive'
         }
     }],
 
